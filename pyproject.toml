@@ -1,0 +1,55 @@
+[project]
+name = "ragkit"
+version = "0.1.0"
+description = "Reusable retrieval and generation pipeline over Postgres/pgvector and Elasticsearch."
+readme = "README.md"
+authors = [
+    { name = "Shadrach Oloyede", email = "shadrachtemitayo@gmail.com" },
+]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "langchain-core>=1.5.3",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[project.optional-dependencies]
+postgres = [
+    "langchain-postgres>=0.0.17",
+    "langchain-text-splitters>=1.1.2",
+    "psycopg[binary]>=3.3.4",
+]
+elasticsearch = [
+    "elasticsearch>=8.15.0,<9",
+    "langchain-text-splitters>=1.1.2",
+]
+voyage = ["langchain-voyageai>=0.4.0"]
+openai = ["langchain-openai>=1.4.1"]
+rerank = ["cohere>=7.0.8"]
+tracing = ["braintrust>=0.35.0", "python-dotenv>=1.0.1"]
+all = [
+    "ragkit[postgres,elasticsearch,voyage,openai,rerank,tracing]",
+]
+dev = ["pytest>=8.0.0", "ruff>=0.8.0"]
+
+[build-system]
+requires = ["uv_build>=0.11.28,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "D"]
+ignore = ["D417", "E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
