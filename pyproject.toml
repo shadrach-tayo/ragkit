@@ -34,8 +34,17 @@ all = [
 dev = ["pytest>=8.0.0", "ruff>=0.8.0"]
 
 [build-system]
-requires = ["uv_build>=0.11.28,<0.12.0"]
-build-backend = "uv_build"
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ragkit", "ragkit.elasticsearch", "ragkit.vector_store"]
+
+[tool.setuptools.package-dir]
+ragkit = "src"
+
+[tool.setuptools.package-data]
+ragkit = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -43,6 +52,10 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+src = ["src"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ragkit"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "D"]
