@@ -1,4 +1,4 @@
-# ragkit
+# Ragkit
 
 Reusable RAG retrieve / ingest / generate library extracted from the LangGraph playground.
 
