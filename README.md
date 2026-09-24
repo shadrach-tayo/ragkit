@@ -1,6 +1,6 @@
 # Ragkit
 
-Reusable RAG retrieve / ingest / generate library extracted from the LangGraph playground.
+Reusable RAG retrieve / ingest / generate library extracted from multiple reimplementation from different projects.
 
 Apps own their documents, prompts, and indexes. This package owns chunking into
 Postgres/pgvector and Elasticsearch, Voyage embeddings, optional Cohere rerank,
